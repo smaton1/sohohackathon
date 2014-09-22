@@ -1,0 +1,17 @@
+<html ng-app="yahooWeatherApp">
+<head>
+  <title>Weather App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>    
+  <script type="text/javascript" src="app.js"></script> 
+</head>
+<body>
+  <div ng-controller="WeatherController">
+    <p>The current temperature in London is: {{ londontemp }} </p>
+    <p>The current temperature in Berlin is: {{berlintemp}}</p>
+    <button ng-click="higher()">Higher</button>
+    <button ng-click="lower()">Lower</button>
+
+
+  </div>
+</body>
+</html>
