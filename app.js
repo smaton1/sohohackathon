@@ -8,6 +8,31 @@
       $scope.londontemp = $scope.london.query.results.channel.item.condition.temp
     });
 
+    var randomcountry = 
+
+    function fetch_random(obj) {
+        var temp_key, keys = [];
+        for(temp_key in obj) {
+           if(obj.hasOwnProperty(temp_key)) {
+               keys.push(temp_key);
+           }
+        }
+        return obj[keys[Math.floor(Math.random() * keys.length)]];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Berlin%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
       $scope.berlin = data
       $scope.berlintemp = $scope.berlin.query.results.channel.item.condition.temp
@@ -30,15 +55,30 @@
       }
     };
 
+    // function fetch_random(obj) {
+    //     var temp_key, keys = [];
+    //     for(temp_key in obj) {
+    //        if(obj.hasOwnProperty(temp_key)) {
+    //            keys.push(temp_key);
+    //        }
+    //     }
+    //     return obj[keys[Math.floor(Math.random() * keys.length)]];
+    // }
 
-    $scope.countries {
+    // $scope.random_name = fetch_random($scope.countries);
+
+    // $scope.random_name = fetch_random($scope.countries);
+    // // document.getElementById('question').innerHTML="Q." + random_name +"  is capital for which country"
+
+
+    $scope.countries = {
 
       Afghanistan: "Kabul", 
       Albania: "Tirana",
       Algeria: "Algiers",
       Andorra: "Andorra la Vella",
       Angola: "Luanda",
-      Antigua and Barbuda: "St. John's",
+      Antigua_and_Barbuda: "St. John's",
       Argentina: "Buenos Aires",
       Armenia: "Yerevan",
       Australia: "Canberra",
@@ -181,19 +221,19 @@
       Saint_Vincent_and_the_Grenadines: "Kingstown",
       Samoa: "Apia",
       San_Marino: "San Marino",
-      São_Tomé_and_Príncipe: "São Tomé",
+      Sao_Tome_and_Principe: "São Tomé",
       Saudi_Arabia: "Riyadh",
       Senegal: "Dakar",
       Serbia: "Belgrade",
       Seychelles: "Victoria",
-      Sierra Leone: "Freetown",
+      Sierra_Leone: "Freetown",
       Singapore: "Singapore",
       Slovakia: "Bratislava",
-      Slovenia,: "Ljubljana",
-      Solomon Islands: "Honiara",
+      Slovenia: "Ljubljana",
+      Solomon_Islands: "Honiara",
       Somalia: "Mogadishu",
-      South Africa: "Pretoria",
-      South Sudan: "Juba",
+      South_Africa: "Pretoria",
+      South_Sudan: "Juba",
       Spain: "Madrid",
       Sri_Lanka: "Sri Jayawardenepura Kotte",
       Sudan: "Khartoum",
