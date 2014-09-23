@@ -217,12 +217,12 @@
     });
 
 
-
     $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
       $scope.randomcapitaldata = data
       $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
 
     });
+
 
     $scope.getFlickerData = function(words) {
 
@@ -258,6 +258,11 @@
     $scope.next=function(){
       $scope.answer = ""
       fetch_random($scope.countries)
+        $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
+      $scope.randomcapitaldata = data
+      $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
+
+    });
     }
 
     $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22"+$scope.randomcountry+"%2C%20capital%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
@@ -268,10 +273,6 @@
     $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22london%2C%20building%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
       console.log(data)
       $scope.londonpic = data.query.results.photo[1]
-    })
-
-
-
-
+    });
    }])
 })();
