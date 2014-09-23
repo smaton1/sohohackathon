@@ -1,198 +1,189 @@
-
-var testcountries {
-
-  Afghanistan: "Kabul", 
-  Albania: "Tirana",
-  Algeria: "Algiers",
-  Andorra: "Andorra la Vella",
-  Angola: "Luanda",
-  Antigua and Barbuda: "St. John's",
-  Argentina: "Buenos Aires",
-  Armenia: "Yerevan",
-  Australia: "Canberra",
-  Austria: "Vienna",
-  Azerbaijan: "Baku",
-  Bahamas: "Nassau",
-  Bahrain: "Manama",
-  Bangladesh: "Dhaka",
-  Barbados: "Bridgetown",
-  Belarus: "Minsk",
-  Belgium: "Brussels",
-  Belize: "Belmopan",
-  Benin: "Porto-Novo",
-  Bhutan: "Thimphu",
-  Bolivia: "Sucre",
-  Bosnia_and_Herzegovina: "Sarajevo",
-  Botswana: "Gaborone",
-  Brazil: "Brasília",
-  Brunei: "Bandar Seri Begawan",
-  Bulgaria: "Sofia",
-  Burkina_Faso: "Ouagadougou",
-  Burma: "Naypyidaw (Pyinmana)",
-  Burundi: "Bujumbura",
-  Cambodia: "Phnom Penh",
-  Cameroon: "Yaoundé",
-  Canada: "Ottawa",
-  Cape_Verde: "Praia",
-  Central_African_Republic: "Bangui",
-  Chad: "N'Djamena",
-  Chile: "Santiago",
-  China: "Beijing",
-  Colombia: "Bogotá",
-  Comoros: "Moroni",
-  Congo: "Kinshasa",
-  Costa_Rica: "San José",
-  Croatia: "Zagreb",
-  Cuba: "Havana",
-  Cyprus: "Nicosia",
-  Czech_Republic: "Prague",
-  Denmark: "Copenhagen",
-  Djibouti: "Djibouti",
-  Dominica: "Roseau",
-  Dominican_Republic: "Santo Domingo",
-  East_Timor: "Dili",
-  Ecuador: "Quito",
-  Egypt: "Cairo",
-  El_Salvador: "San Salvador",
-  Equatorial_Guinea: "Malabo",
-  Eritrea: "Asmara",
-  Estonia: "Tallinn",
-  Ethiopia: "Addis Ababa",
-  Fiji: "Suva",
-  Finland: "Helsinki",
-  France: "Paris",
-  Gabon: "Libreville",
-  Gambia: "Banjul",
-  Georgia: "Tbilisi",
-  Germany: "Berlin",
-  Ghana: "Accra",
-  Greece: "Athens",
-  Grenada: "St. George's",
-  Guatemala: "Guatemala City",
-  Guinea: "Conakry",
-  Guinea_Bissau: "Bissau",
-  Guyana: "Georgetown",
-  Haiti: "Port-au-Prince",
-  Honduras: "Tegucigalpa",
-  Hungary: "Budapest",
-  Iceland: "Reykjavík",
-  India: "New Delhi",
-  Indonesia: "Jakarta",
-  Iran: "Tehran",
-  Iraq: "Baghdad",
-  Ireland: "Dublin",
-  Israel: "Jerusalem",
-  Italy: "Rome",
-  Ivory_Coast: "Yamoussoukro",
-  Jamaica: "Kingston",
-  Japan: "Tokyo",
-  Jordan: "Amman",
-  Kazakhstan: "Astana",
-  Kenya: "Nairobi",
-  Kiribati: "South Tarawa",
-  Korea_North: "Pyongyang",
-  Korea_South: "Seoul",
-  Kuwait: "Kuwait City",
-  Kyrgyzstan: "Bishkek",
-  Laos: "Vientiane",
-  Latvia: "Riga",
-  Lebanon: "Beirut",
-  Lesotho: "Maseru",
-  Liberia: "Monrovia",
-  Libya: "Tripoli",
-  Liechtenstein: "Vaduz",
-  Lithuania: "Vilnius",
-  Luxembourg: "Luxembourg City",
-  Macedonia: "Skopje",
-  Madagascar: "Antananarivo",
-  Malawi: "Lilongwe",
-  Malaysia: "Kuala Lumpur",
-  Maldives: "Malé",
-  Mali: "Bamako",
-  Malta: "Valletta",
-  Marshall_Islands: "Majuro",
-  Mauritania: "Nouakchott",
-  Mauritius: "Port Louis",
-  Mexico: "Mexico City",
-  Micronesia: "Federated States of Palikir",
-  Moldova: "Chi_in_u",
-  Monaco: "Monaco",
-  Mongolia: "Ulan Bator",
-  Montenegro: "Podgorica",
-  Morocco: "Rabat",
-  Mozambique: "Maputo",
-  Namibia: "Windhoek",
-  Nepal: "Kathmandu",
-  Netherlands: "Kingdom of the Amsterdam",
-  New_Zealand: "Wellington",
-  Nicaragua: "Managua",
-  Niger: "Niamey",
-  Nigeria: "Abuja",
-  Norway: "Oslo",
-  Oman: "Muscat",
-  Pakistan: "Islamabad",
-  Palau: "Ngerulmud",
-  Palestine: "Jerusalem",
-  Panama: "Panama City",
-  Papua_New_Guinea: "Port Moresby",
-  Paraguay: "Asunción",
-  Peru: "Lima",
-  Philippines: "Manila",
-  Poland: "Warsaw",
-  Portugal: "Lisbon",
-  Qatar: "Doha",
-  Romania: "Bucharest",
-  Russia: "Moscow",
-  Rwanda: "Kigali",
-  Saint_Kitts_and_Nevis: "Basseterre",
-  Saint_Lucia: "Castries",
-  Saint_Vincent_and_the_Grenadines: "Kingstown",
-  Samoa: "Apia",
-  San_Marino: "San Marino",
-  São_Tomé_and_Príncipe: "São Tomé",
-  Saudi_Arabia: "Riyadh",
-  Senegal: "Dakar",
-  Serbia: "Belgrade",
-  Seychelles: "Victoria",
-  Sierra Leone: "Freetown",
-  Singapore: "Singapore",
-  Slovakia: "Bratislava",
-  Slovenia,: "Ljubljana",
-  Solomon Islands: "Honiara",
-  Somalia: "Mogadishu",
-  South Africa: "Pretoria",
-  South Sudan: "Juba",
-  Spain: "Madrid",
-  Sri_Lanka: "Sri Jayawardenepura Kotte",
-  Sudan: "Khartoum",
-  Suriname: "Paramaribo",
-  Swaziland: "Mbabane",
-  Sweden: "Stockholm",
-  Switzerland: "Bern",
-  Syria: "Damascus",
-  Tajikistan: "Dushanbe",
-  Tanzania: "Dodoma",
-  Thailand: "Bangkok",
-  Togo: "Lomé",
-  Tonga: "Nuku_alofa",
-  Trinidad_and_Tobago: "Port of Spain",
-  Tunisia: "Tunis",
-  Turkey: "Ankara",
-  Turkmenistan: "Ashgabat",
-  Tuvalu: "Funafuti",
-  Uganda: "Kampala",
-  Ukraine: "Kiev",
-  United_Arab_Emirates: "Abu Dhabi",
-  United_Kingdom: "London",
-  United_States: "Washington, D.C.",
-  Uruguay: "Montevideo",
-  Uzbekistan: "Tashkent",
-  Vanuatu: "Port Vila",
-  Vatican_City: "Vatican City",
-  Venezuela: "Caracas",
-  Vietnam: "Hanoi",
-  Yemen: "Sana'a",
-  Zambia: "Lusaka",
-  Zimbabwe: "Harare",
-
-}
+Afghanistan
+Albania
+Algeria
+Andorra
+Angola
+Antigua_and_Barbuda
+Argentina
+Armenia
+Australia
+Austria
+Azerbaijan
+Bahamas
+Bahrain
+Bangladesh
+Barbados
+Belarus
+Belgium
+Belize
+Benin
+Bhutan
+Bolivia
+Bosnia_and_Herzegovina
+Botswana
+Brazil
+Brunei
+Bulgaria
+Burkina_Faso
+Burundi
+Cambodia
+Cameroon
+Canada
+Cape_Verde
+Central_African_Republic
+Chad
+Chile
+China
+Colombia
+Comoros
+Congo
+Costa_Rica
+Croatia
+Cuba
+Cyprus
+Czech_Republic
+Denmark
+Djibouti
+Dominica
+Dominican_Republic
+Ecuador
+Egypt
+El_Salvador
+Equatorial_Guinea
+Eritrea
+Estonia
+Ethiopia
+Fiji
+Finland
+France
+Gabon
+Gambia
+Georgia
+Germany
+Ghana
+Greece
+Grenada
+Guatemala
+Guinea
+Guinea_Bissau
+Guyana
+Haiti
+Honduras
+Hungary
+Iceland
+India
+Indonesia
+Iran
+Iraq
+Ireland
+Israel
+Italy
+Jamaica
+Japan
+Jordan
+Kazakhstan
+Kenya
+Kiribati
+Korea_North
+Korea_South
+Kuwait
+Kyrgyzstan
+Laos
+Latvia
+Lebanon
+Lesotho
+Liberia
+Libya
+Liechtenstein
+Lithuania
+Luxembourg
+Macedonia
+Madagascar
+Malawi
+Malaysia
+Maldives
+Mali
+Malta
+Marshall_Islands
+Mauritania
+Mauritius
+Mexico
+MicronesiaPalikir",
+Moldova
+Monaco
+Mongolia
+Montenegro
+Morocco
+Mozambique
+Namibia
+Nepal
+Netherlands,
+New_Zealand
+Nicaragua
+Niger
+Nigeria
+Norway
+Oman
+Pakistan
+Palau
+Palestine
+Panama
+Papua_New_Guinea
+Paraguay
+Peru
+Philippines
+Poland
+Portugal
+Qatar
+Romania
+Russia
+Rwanda
+Saint_Kitts_and_Nevis
+Saint_Lucia
+Saint_Vincent_and_the_GrenadinesKingstown",
+Samoa
+San_Marino
+Sao_Tome_and_Principe
+Saudi_Arabia
+Senegal
+Serbia
+Seychelles
+Sierra_Leone
+Singapore
+Slovakia
+Slovenia
+Solomon_Islands
+Somalia
+South_Africa
+South_Sudan
+Spain
+Sri_Lanka
+Sudan
+Suriname
+Swaziland
+Sweden
+Switzerland
+Syria
+Tajikistan
+Tanzania
+Thailand
+Togo
+Tonga
+Trinidad_and_Tobago
+Tunisia
+Turkey
+Turkmenistan
+Tuvalu
+Uganda
+Ukraine
+United_Arab_Emirates
+United_Kingdom
+United_States
+Uruguay
+Uzbekistan
+Vanuatu
+Venezuela
+Vietnam
+Yemen
+Zambia
+Zimbabwe

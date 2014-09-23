@@ -32,7 +32,6 @@
       Brunei: "Bandar Seri Begawan",
       Bulgaria: "Sofia",
       Burkina_Faso: "Ouagadougou",
-      Burma: "Naypyidaw (Pyinmana)",
       Burundi: "Bujumbura",
       Cambodia: "Phnom Penh",
       Cameroon: "Yaoundé",
@@ -54,7 +53,6 @@
       Djibouti: "Djibouti",
       Dominica: "Roseau",
       Dominican_Republic: "Santo Domingo",
-      East_Timor: "Dili",
       Ecuador: "Quito",
       Egypt: "Cairo",
       El_Salvador: "San Salvador",
@@ -87,7 +85,6 @@
       Ireland: "Dublin",
       Israel: "Jerusalem",
       Italy: "Rome",
-      Ivory_Coast: "Yamoussoukro",
       Jamaica: "Kingston",
       Japan: "Tokyo",
       Jordan: "Amman",
@@ -118,7 +115,6 @@
       Mauritania: "Nouakchott",
       Mauritius: "Port Louis",
       Mexico: "Mexico City",
-      Micronesia: "Federated States of Palikir",
       Moldova: "Chi_in_u",
       Monaco: "Monaco",
       Mongolia: "Ulan Bator",
@@ -127,7 +123,6 @@
       Mozambique: "Maputo",
       Namibia: "Windhoek",
       Nepal: "Kathmandu",
-      Netherlands: "Kingdom of the Amsterdam",
       New_Zealand: "Wellington",
       Nicaragua: "Managua",
       Niger: "Niamey",
@@ -150,7 +145,6 @@
       Rwanda: "Kigali",
       Saint_Kitts_and_Nevis: "Basseterre",
       Saint_Lucia: "Castries",
-      Saint_Vincent_and_the_Grenadines: "Kingstown",
       Samoa: "Apia",
       San_Marino: "San Marino",
       Sao_Tome_and_Principe: "São Tomé",
@@ -192,7 +186,6 @@
       Uruguay: "Montevideo",
       Uzbekistan: "Tashkent",
       Vanuatu: "Port Vila",
-      Vatican_City: "Vatican City",
       Venezuela: "Caracas",
       Vietnam: "Hanoi",
       Yemen: "Sana'a",
@@ -230,6 +223,17 @@
       $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
 
     });
+
+    $scope.getFlickerData = function(words) {
+
+      var url1 = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&text=" + words + "&format=json&api_key=5b782a475699614a38519d4cc6cd32c3&nojsoncallback=1"
+      $http.get(url1).success(function(data) {
+        $scope.flickerPics = data.photos.photo
+      })
+    } 
+
+    $scope.flickercapitalphotos = $scope.getFlickerData($scope.randomcapital)
+
 
     $scope.higher = function(){
       if ($scope.randomcapitaltemp > $scope.londontemp){
