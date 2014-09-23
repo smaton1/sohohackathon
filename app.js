@@ -3,74 +3,6 @@
 
    app.controller('WeatherController' , ["$scope", "$http", function($scope, $http) {
 
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22London%2C%20Gb%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
-      $scope.london = data
-      $scope.londontemp = $scope.london.query.results.channel.item.condition.temp
-    });
-
-    var randomcountry = 
-
-    function fetch_random(obj) {
-        var temp_key, keys = [];
-        for(temp_key in obj) {
-           if(obj.hasOwnProperty(temp_key)) {
-               keys.push(temp_key);
-           }
-        }
-        return obj[keys[Math.floor(Math.random() * keys.length)]];
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22Berlin%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
-      $scope.berlin = data
-      $scope.berlintemp = $scope.berlin.query.results.channel.item.condition.temp
-
-    });
-
-    $scope.higher = function(){
-      if ($scope.berlintemp > $scope.londontemp){
-        alert('correct')
-      }else{
-        alert('wrong')
-      }
-    };
-
-    $scope.lower = function(){
-      if ($scope.berlintemp < $scope.londontemp){
-        alert('correct')
-      }else{
-        alert('wrong')
-      }
-    };
-
-    // function fetch_random(obj) {
-    //     var temp_key, keys = [];
-    //     for(temp_key in obj) {
-    //        if(obj.hasOwnProperty(temp_key)) {
-    //            keys.push(temp_key);
-    //        }
-    //     }
-    //     return obj[keys[Math.floor(Math.random() * keys.length)]];
-    // }
-
-    // $scope.random_name = fetch_random($scope.countries);
-
-    // $scope.random_name = fetch_random($scope.countries);
-    // // document.getElementById('question').innerHTML="Q." + random_name +"  is capital for which country"
-
-
     $scope.countries = {
 
       Afghanistan: "Kabul", 
@@ -268,6 +200,51 @@
       Zimbabwe: "Harare",
 
     }
+
+    function fetch_random(obj) {
+        var temp_key, keys = [];
+
+        for(temp_key in obj) {
+           if(obj.hasOwnProperty(temp_key)) {
+               keys.push(temp_key);
+           }
+        }
+        $scope.randomcountry = keys[Math.floor(Math.random() * keys.length)] 
+        $scope.randomcapital = obj[$scope.randomcountry];
+        
+    }
+
+    fetch_random($scope.countries)
+
+    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22London%2C%20Gb%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
+      $scope.london = data
+      $scope.londontemp = $scope.london.query.results.channel.item.condition.temp
+    });
+
+
+
+    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
+      $scope.randomcapitaldata = data
+      $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
+
+    });
+
+    $scope.higher = function(){
+      if ($scope.randomcapitaltemp > $scope.londontemp){
+        $scope.answer = "Correct!"
+      }else{
+        $scope.answer = "Wrong!"
+      }
+    };
+
+    $scope.lower = function(){
+      if ($scope.randomcapitaltemp < $scope.londontemp){
+        $scope.answer = "Correct!"
+      }else{
+        $scope.answer = "Wrong!"
+      }
+    };
+
 
 
    }])

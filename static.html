@@ -9,9 +9,15 @@
   <h1>London temperature....higher or lower?</h1>
   <div ng-controller="WeatherController">
     <p id='london'>The current temperature in London is: {{ londontemp }} </p>
-    <p id='other_city'>The current temperature in Berlin is: {{ berlintemp  }}</p>
+    <p id='other_city'>The current temperature in {{ randomcapital }} is: ???</p>
+
     <button class='higher' ng-click="higher()">Higher</button>
     <button class='lower' ng-click="lower()">Lower</button>
+
+    <div ng-show='answer'> 
+      <h1> {{ answer }} : {{ randomcountry }} : {{ randomcapitaltemp }} </h1>
+    </div>
+
 
     <div ng-repeat="(country, capital) in countries">
       <p>  {{ country }} : {{ capital }}</p>
