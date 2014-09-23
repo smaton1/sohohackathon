@@ -3,9 +3,6 @@
 
    app.controller('WeatherController' , ["$scope", "$http", function($scope, $http) {
 
-
-    $scope.score = 0
-
     function fetch_random(obj) {
         var temp_key, keys = [];
 
@@ -18,32 +15,25 @@
         $scope.randomcapital = obj[$scope.randomcountry];
         $scope.randomcountrycode = (countrycodes[$scope.randomcountry]).toLowerCase();
         
+
+      $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22London%2C%20Gb%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
+        $scope.london = data
+        $scope.londontemp = $scope.london.query.results.channel.item.condition.temp
+      });
+
+
+      $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
+        $scope.randomcapitaldata = data
+        $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
+
+      });
+
+      $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22"+$scope.randomcountry+"%2C%20capital%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
+        console.log(data)
+        $scope.pic = data.query.results.photo[0]
+      });
+
     }
-
-    fetch_random(countries)
-
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22London%2C%20Gb%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
-      $scope.london = data
-      $scope.londontemp = $scope.london.query.results.channel.item.condition.temp
-    });
-
-
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
-      $scope.randomcapitaldata = data
-      $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
-
-    });
-
-
-    $scope.getFlickerData = function(words) {
-
-      var url1 = "https://api.flickr.com/services/rest/?&method=flickr.photos.search&text=" + words + "&format=json&api_key=5b782a475699614a38519d4cc6cd32c3&nojsoncallback=1"
-      $http.get(url1).success(function(data) {
-        $scope.flickerPics = data.photos.photo
-      })
-    } 
-
-    $scope.flickercapitalphotos = $scope.getFlickerData($scope.randomcapital)
 
 
     $scope.higher = function(){
@@ -69,27 +59,11 @@
     $scope.next=function(){
       $scope.answer = ""
       fetch_random(countries)
-        $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + $scope.randomcapital + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys.json").success(function(data){
-      $scope.randomcapitaldata = data
-      $scope.randomcapitaltemp = $scope.randomcapitaldata.query.results.channel.item.condition.temp
-
-    });
-
-      $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22"+$scope.randomcountry+"%2C%20capital%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
-      console.log(data)
-      $scope.pic = data.query.results.photo[0]
-    });
     }
 
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22"+$scope.randomcountry+"%2C%20capital%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
-      console.log(data)
-      $scope.pic = data.query.results.photo[0]
-    })
+    $scope.score = 0
+    $scope.next()
 
-    $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20flickr.photos.search%20where%20has_geo%3D%22false%22%20and%20text%3D%22london%2C%20building%22%20and%20api_key%3D%225b782a475699614a38519d4cc6cd32c3%22%3B&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys").success(function(data){
-      console.log(data)
-      $scope.londonpic = data.query.results.photo[1]
-    });
    }])
 })();
 
