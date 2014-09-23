@@ -35,6 +35,11 @@
 
     }
 
+    $http.get("http://finance.yahoo.com/rss/industry?s=yhoo").success(function(data){
+      console.log(data)
+      $scope.finance=data
+    })
+
 
     $scope.higher = function(){
       if ($scope.randomcapitaltemp > $scope.londontemp){
