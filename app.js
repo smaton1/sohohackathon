@@ -2,7 +2,7 @@
   var app = angular.module('yahooWeatherApp', []); 
 
    app.controller('WeatherController' , ["$scope", "$http", function($scope, $http) {
-    $scope.score = 0
+    
     $scope.countries = {
 
       Afghanistan: "Kabul", 
@@ -201,6 +201,8 @@
 
     }
 
+    $scope.score = 0
+
     function fetch_random(obj) {
         var temp_key, keys = [];
 
@@ -232,16 +234,20 @@
     $scope.higher = function(){
       if ($scope.randomcapitaltemp > $scope.londontemp){
         $scope.answer = "Correct!"
+        $scope.score = $scope.score + 1
       }else{
         $scope.answer = "Wrong!"
+        $scope.score = $scope.score - 1
       }
     };
 
     $scope.lower = function(){
       if ($scope.randomcapitaltemp < $scope.londontemp){
         $scope.answer = "Correct!"
+        $scope.score = $scope.score + 1
       }else{
         $scope.answer = "Wrong!"
+        $scope.score = $scope.score - 1
       }
     };
 
@@ -260,13 +266,7 @@
       $scope.londonpic = data.query.results.photo[1]
     })
 
-    function update_score(answer){
-      if ($scope.answer = "Correct!"){
-        $scope.score = $scope.score + 1
-      }else{
-        $scope.score = $scope.score - 1
-      }
-    }
+
 
 
    }])
