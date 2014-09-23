@@ -12,10 +12,11 @@
   <div ng-controller="WeatherController">
     
     <p id='score'>Score = {{score}}</p>
-    <p id='london'>London temp: {{ londontemp }} fahrenheit </p>
+    <p class='info'>London temp: {{ londontemp }} fahrenheit </p>
     <!-- <img src="https://farm{{ londonpic.farm }}.staticflickr.com/{{ londonpic.server }}/{{ londonpic.id }}_{{londonpic.secret }}.jpg" /> -->
     
-    <p id='other_city'>{{ randomcapital }} <br/>Warmer or Colder?</p>
+    <p class='info'>{{ randomcapital }} </p>
+    <p class='info'>Warmer or Colder?</p>
     <button class='next' ng-show='answer' ng-click="next()" ng-click="updateScore()">Next</button>
     <button class='higher' ng-click="higher()" ng-hide='answer'>Warmer</button>
     <button class='lower' ng-click="lower()" ng-hide='answer'>Colder</button>
