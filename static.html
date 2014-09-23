@@ -9,12 +9,13 @@
 <body>
   <h1>London temperature....higher or lower?</h1>
   <div ng-controller="WeatherController">
+    <p>Current score = {{score}}</p>
     <p id='london'>The current temperature in London is: {{ londontemp }} fahrenheit </p>
     <img src="https://farm{{ londonpic.farm }}.staticflickr.com/{{ londonpic.server }}/{{ londonpic.id }}_{{londonpic.secret }}.jpg" />
-    <p id='other_city'>Is the current temperature in {{ randomcapital }} higher or lower than Londons?</p>
-
-    <button class='higher' ng-click="higher()">Higher</button>
-    <button class='lower' ng-click="lower()">Lower</button>
+    <p id='other_city'>Is the current temperature in {{ randomcapital }} higher or lower than in London?</p>
+    <button class='next' ng-show='answer' ng-click="next()">Next</button>
+    <button class='higher' ng-click="higher()" ng-hide='answer'>Higher</button>
+    <button class='lower' ng-click="lower()" ng-hide='answer'>Lower</button>
 
     <div ng-show='answer'> 
       <h1> {{ answer }} : {{ randomcountry }} : {{ randomcapitaltemp }} </h1>
