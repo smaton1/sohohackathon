@@ -43,20 +43,20 @@
 
     $scope.higher = function(){
       if ($scope.randomcapitaltemp > $scope.londontemp){
-        $scope.answer = "Correct!"
+        $scope.answer = "CORRECT!"
         $scope.score = $scope.score + 1
       }else{
-        $scope.answer = "Wrong!"
+        $scope.answer = "WRONG!"
         $scope.score = $scope.score - 1
       }
     };
 
     $scope.lower = function(){
       if ($scope.randomcapitaltemp < $scope.londontemp){
-        $scope.answer = "Correct!"
+        $scope.answer = "CORRECT!"
         $scope.score = $scope.score + 1
       }else{
-        $scope.answer = "Wrong!"
+        $scope.answer = "WRONG!"
         $scope.score = $scope.score - 1
       }
     };
