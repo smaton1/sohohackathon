@@ -4,6 +4,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>    
   <script type="text/javascript" src="app.js"></script>
   <link rel="stylesheet" href="style.css" /> 
+  <meta charset="UTF-8">
 </head>
 <body>
   <h1>London temperature....higher or lower?</h1>
@@ -18,9 +19,10 @@
       <h1> {{ answer }} : {{ randomcountry }} : {{ randomcapitaltemp }} </h1>
     </div>
 
-
-    <div ng-repeat="(country, capital) in countries">
-      <p>  {{ country }} : {{ capital }}</p>
+    <div class="cont">
+      <div ng-repeat="pic in flickerPics">
+        <img src="https://farm{{ pic.farm }}.staticflickr.com/{{ pic.server }}/{{ pic.id }}_{{pic.secret }}.jpg" />
+      </div>
     </div>
 
   </div>
