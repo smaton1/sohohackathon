@@ -9,21 +9,27 @@
 <body>
   <h1>London temperature....higher or lower?</h1>
   <div ng-controller="WeatherController">
-    <p id='london'>The current temperature in London is: {{ londontemp }} </p>
-    <p id='other_city'>The current temperature in {{ randomcapital }} is: ???</p>
+    <p id='london'>The current temperature in London is: {{ londontemp }} fahrenheit </p>
+    <img src="https://farm{{ londonpic.farm }}.staticflickr.com/{{ londonpic.server }}/{{ londonpic.id }}_{{londonpic.secret }}.jpg" />
+    <p id='other_city'>Is the current temperature in {{ randomcapital }} higher or lower than Londons?</p>
 
     <button class='higher' ng-click="higher()">Higher</button>
     <button class='lower' ng-click="lower()">Lower</button>
 
     <div ng-show='answer'> 
       <h1> {{ answer }} : {{ randomcountry }} : {{ randomcapitaltemp }} </h1>
+
+     <img src="https://farm{{ pic.farm }}.staticflickr.com/{{ pic.server }}/{{ pic.id }}_{{pic.secret }}.jpg" />
     </div>
 
-    <div class="cont">
+
+<!--     <div class="cont">
       <div ng-repeat="pic in flickerPics">
         <img src="https://farm{{ pic.farm }}.staticflickr.com/{{ pic.server }}/{{ pic.id }}_{{pic.secret }}.jpg" />
       </div>
-    </div>
+    </div> -->
+
+
 
   </div>
 </body>

@@ -4,6 +4,11 @@ body{
   text-align: center;
 }
 
+img{
+ border-radius: 10px;
+ max-height: 200px;
+}
+
 h1{
   font-size: 75px;
 }
